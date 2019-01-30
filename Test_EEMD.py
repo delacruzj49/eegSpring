@@ -13,7 +13,7 @@ import pandas as pd
 #S += 1*np.sin(4*2*np.pi*(t-0.8)**2)
 #S += t**2.1 -t
 
-S = np.loadtxt('20181109_Control.csv', delimiter=',', dtype='float', skiprows=1, unpack=True)
+S = np.loadtxt('20181109_Read.csv', delimiter=',', dtype='float', skiprows=1, unpack=True)
 #noAct, control, piano, reading = loadtxt('20181102_4act.csv', delimiter=',', dtype='float', skiprows=1, unpack=True)
 #S = control
 t = np.arange(len(S))
@@ -37,7 +37,7 @@ plt.plot(t, S, 'r')
 
 nFiltered = int(0.8*nIMFs)
 filteredS = [sum(x) for x in zip(*eIMFs[range(nFiltered)])]
-np.savetxt("filteredS.csv", S, delimiter=",")
+np.savetxt("filtered_Read.csv", S, delimiter=",")
 
 for n in range(nIMFs):
     plt.subplot(nIMFs+1, 1, n+2)
@@ -47,5 +47,5 @@ for n in range(nIMFs):
 
 plt.xlabel("Time [s]")
 plt.tight_layout()
-plt.savefig('eemd_example', dpi=120)
+plt.savefig('eemd_read_example', dpi=120)
 plt.show()
