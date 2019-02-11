@@ -464,6 +464,7 @@ def spectral_entropy(X, Band, Fs, Power_Ratio = None):
 		Power, Power_Ratio = bin_power(X, Band, Fs)
 
 	Spectral_Entropy = 0
+	
 	for i in xrange(0, len(Power_Ratio) - 1):
 		Spectral_Entropy += Power_Ratio[i] * log(Power_Ratio[i])
 	Spectral_Entropy /= log(len(Power_Ratio))	# to save time, minus one is omitted
